@@ -1,0 +1,32 @@
+<%autors_id = @autors.find_by(id: comment.user_id) %>
+<% c_id = comment.id %>
+<% if  c_id != nil %>
+
+  <div class="container" id="comment-<%= c_id %>">
+    <div class="row about_comment" style="padding: .5rem">
+      <div class="col">
+        Name: <%=autors_id.full_name %>
+      </div>
+      <div class="col">
+        Add at: <%=comment.created_at %>
+      </div>
+    </div>
+    <div class="row coment_box">
+      <div class="col-md-8">
+        <%= comment.body %>
+      </div>
+      <div class="col-6 col-md-4" style="padding: .5rem">
+        Status: <%= comment.status %><br>
+        <%= link_to "Delete", post_comment_path(post_id: comment.post_id, id: comment.id),
+                    method: :delete,
+                    class: 'btn btn-danger btn-sm', role: "button", style: "color: white",
+                    data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+    <hr>
+  </div>
+<% end %>
+
+
+
+

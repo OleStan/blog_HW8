@@ -1,0 +1,9 @@
+<div class="container">
+<h1>New Post</h1>
+<% @post.errors.any? %>
+  <% @post.errors.full_messages.each do |msg| %>
+    <div class="alert alert-danger"><%=msg%></div>
+  <% end %>
+<%= render 'form', post: @post %>
+<%= link_to 'Back', posts_path, class: 'btn btn-secondary btn-sm', role: "button", style: "color: white" %>
+</div>
