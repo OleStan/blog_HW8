@@ -20,7 +20,7 @@
         <th scope="row" ><%= post.name %></th>
         <td><%= post.title %></td>
         <td class="miniature"><img src = "<%= post.image %>" class="img_miniature"></td>
-        <td><%= post.content %></td>
+        <td><%= truncate post.content, length: 160 %></td>
         <td><%= link_to 'Show', post, class: 'btn btn-secondary btn-sm', role: "button", style: "color: white"   %></td>
         <td><%= link_to 'Edit', edit_post_path(post), class: 'btn btn-info btn-sm', role: "button", style: "color: white" %></td>
         <td ><%= link_to 'Delete', post, class: 'btn btn-danger btn-sm', role: "button", style: "color: white" , method: :delete, data: { confirm: 'Are you sure?' } %></td>
