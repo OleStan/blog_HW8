@@ -1,7 +1,7 @@
 <%autors_id = @autors.find_by(id: comment.user_id) %>
 <% if  comment.id != nil %>
 
-  <div class="container" id="comment-<%= comment.id %>">
+  <div class="container " id="comment-<%= comment.id %>">
     <div class="row about_comment" style="padding: .5rem">
       <div class="col">
         Name: <%=autors_id.full_name %>
@@ -11,10 +11,10 @@
       </div>
     </div>
     <div class="row coment_box">
-      <div class="col-md-8">
+      <div class="col-md-10">
         <%= comment.body %>
       </div>
-      <div class="col-6 col-md-4" style="padding: .5rem">
+      <div class="col-6 col-md-2" style="padding: .5rem">
         Status: <%= comment.status %><br>
         <% if comment.status == 'unpublished' %>
           <%= link_to 'Publish Comment', publish_post_comment_path(@post.id, comment.id), method: :post,
