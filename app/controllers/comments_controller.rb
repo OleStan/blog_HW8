@@ -9,14 +9,14 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    $temp = @post
     @comment = @post.comments.create(comment_params)
-    if(@comment.save)
-      redirect_to post_path(@post)
-    else
-      render :new
+    message = if @comment.persisted?
+                { notice: 'Commented created successfully'}
+              else
+                { alert: "Comment was not created. Content can't be blank." }
+              end
+    redirect_to post_path(@post), message
     end
-  end
 
   def destroy
     @post = Post.find(params[:post_id])
@@ -32,6 +32,12 @@ class CommentsController < ApplicationController
     redirect_to post_path(@post)
   end
 
+  def publish
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    @comment.update(status: :published)
+    redirect_to post_path(@post), notice: 'Comment was successfully published.'
+  end
 
 
   private

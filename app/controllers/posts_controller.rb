@@ -22,25 +22,7 @@ class PostsController < ApplicationController
                 else
                   @post.comments.published
                 end
-
-
-
-
-
-    / @comments = if params['status'].nil?
-                  @post.comments.published
-                elsif params['status'] == 'published'
-                  @post.comments.unpublished
-                else
-                  @post.comments
-                end /
   end
-
-  def inc_post_view(id)
-    post = posts.find(id)
-    post.increment!(:view_count)
-  end
-
 
   # GET /posts/new
   def new

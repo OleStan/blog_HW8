@@ -1,14 +1,13 @@
 <%autors_id = @autors.find_by(id: comment.user_id) %>
-<% c_id = comment.id %>
-<% if  c_id != nil %>
+<% if  comment.id != nil %>
 
-  <div class="container" id="comment-<%= c_id %>">
+  <div class="container" id="comment-<%= comment.id %>">
     <div class="row about_comment" style="padding: .5rem">
       <div class="col">
         Name: <%=autors_id.full_name %>
       </div>
       <div class="col">
-        Add at: <%=comment.created_at %>
+        Updated <%= distance_of_time_in_words(comment.updated_at, Time.now) %> ago
       </div>
     </div>
     <div class="row coment_box">
@@ -17,6 +16,11 @@
       </div>
       <div class="col-6 col-md-4" style="padding: .5rem">
         Status: <%= comment.status %><br>
+        <% if comment.status == 'unpublished' %>
+          <%= link_to 'Publish Comment', publish_post_comment_path(@post.id, comment.id), method: :post,
+                class: 'btn btn-warning btn-sm', role: "button", style: "color: white",
+                data: { confirm: 'Are you sure?' } %>
+        <% end %>
         <%= link_to "Delete", post_comment_path(post_id: comment.post_id, id: comment.id),
                     method: :delete,
                     class: 'btn btn-danger btn-sm', role: "button", style: "color: white",

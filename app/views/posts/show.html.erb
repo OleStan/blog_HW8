@@ -1,3 +1,5 @@
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -23,8 +25,14 @@
 <%= link_to 'Back', posts_path, class: 'btn btn-secondary', role: "button", style: "color: white" %>
 <hr>
 
-
-
+<script>
+    $(function(){
+        $("#comments_select").change(function(){
+            $('#comments_show').submit()
+        })
+    })
+</script>
+<h2>Comments</h2>
 <form action="<%= post_path(@post) %>" method='get' id='comments_show'>
   <div class='field'>
     <select name='comments_status' class='btn btn-primary' id='comments_select'>
@@ -34,94 +42,10 @@
   </div>
 </form>
 
-<p><%= @comment_status %></p>
-
-<% @comments.each do |comment| %>
-  <div class='comment'>
-    <div>
-      <%= comment.body %>
-    </div>
-  </div>
-<% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <% if @comments.any?%>
   <% @comments.each do |comment| %>
     <%= render "comments/comment", comment: comment %>
   <% end %>
 <% end %>
 
-
-<%= form_for ([@post, @comments.build]) do |form|%>
-  <% if @comments.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize( @comment.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-        <% @comment.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <%= form.label :name%>
-
-  <%= form.select(:user_id, Author.order("first_name ASC").collect {|author| [author.full_name, author.id]}, {prompt: "Select author"},
-                  class: "form-control") %>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :body, class: "form-control"  %>
-  </div>
-
-  <%= form.submit("Add comment", {:class => 'btn btn-success'}) %>
-<% end %>
-
-
-<% Comment.all.each do |c| %>
-  <%= check_box_tag("venue_categories[]", c.id)%>
-<% end %>
-<script>
-    $(function(){
-        $("#comments_select").change(function(){
-            $('#comments_show').submit()
-        })
-        $(".edit_comment").click(function(){
-            $(this).parent().find('.update_comment').removeClass("invisible")
-            $(this).addClass('invisible')
-        })
-    })
-</script>
+<%= render 'comment_add' %>
