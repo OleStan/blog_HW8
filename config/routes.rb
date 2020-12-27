@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root 'posts#index', as: 'home'
-
+  get '/createaccount', to: 'authors#new', as: 'log_in'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+  resources :sessions
+  resources :authors
   resources :posts do
     resources :comments do
     member do
