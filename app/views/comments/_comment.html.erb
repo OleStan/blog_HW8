@@ -14,6 +14,8 @@
       <div class="col-md-10">
         <%= comment.body %>
       </div>
+      <% unless current_author.nil?%>
+        <%if @post.name == current_author.full_name%>
       <div class="col-6 col-md-2" style="padding: .5rem">
         Status: <%= comment.status %><br>
         <% if comment.status == 'unpublished' %>
@@ -26,6 +28,9 @@
                     class: 'btn btn-danger btn-sm', role: "button", style: "color: white",
                     data: { confirm: 'Are you sure?' } %>
       </div>
+          <% end %>
+
+        <% end %>
     </div>
     <hr>
   </div>

@@ -21,7 +21,7 @@
   <% end %>
   <%= form.label :name%>
 
-  <%= form.text_field(:user_id, value:current_author.full_name,
+  <%= form.text_field(:user_id, value:current_author.id,
                   class: "form-control") %>
   <div class="<%= alert %> alert-danger" role="alert" id="alert" style="margin-top: 20px"><%= alert %></div>
   <div class="field">
