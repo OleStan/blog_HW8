@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  before_filter :authorize, only: [:edit, :update]
+
   before_action :set_post, only: %i[show edit update destroy]
 
   # GET /posts
