@@ -13,10 +13,9 @@
 
 
 
-  <div class="form-group" style="margin-bottom: 3%">
-    <%= form.label :name%>
+  <div class="form-group" style="margin-bottom: 3%" style="display: none">
     <%= form.text_field(:author, value:current_author.full_name,
-        class: "form-control", id: "post_name", name: "post[name]") %>
+         id: "post_name", name: "post[name]", style: "visibility:hidden") %>
   </div>
 
 
@@ -38,7 +37,7 @@
   </div>
 
   <div class="actions">
-    <%= form.submit( {:class => "btn btn-success",id: "button", onsubmit: "alert('submit!');return false"})%>
+    <%= form.submit( {:class => "btn btn-success",id: "button"})%>
   </div>
 
 <% end %>

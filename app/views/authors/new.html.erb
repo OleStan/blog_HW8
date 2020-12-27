@@ -1,3 +1,4 @@
+<% genders = ["Male", "Female"] %>
 <div class="row register-wrapp d-flex justify-content-center align-items-center">
   <div class="w-50 mx-auto">
     <div class="register-card">
@@ -5,6 +6,7 @@
         <h5 class="fs-2 text-center pb-3">Register</h5>
         <%= form_with(model: @author, class: "d-flex flex-column align-items-center") do |form| %>
           <% if @author.errors.any? %>
+            <div class="alert alert-danger" role="alert">
             <div class="error_messages">
               <h2>Form is invalid</h2>
               <ul>
@@ -12,6 +14,7 @@
                   <li><%= message %></li>
                 <% end %>
               </ul>
+            </div>
             </div>
           <% end %>
           <div class="py-2 register-form-group-item">
@@ -37,6 +40,8 @@
             <%= form.label :password_confirmation %>
             <%= form.password_field :password_confirmation %>
           </div>
+
+
 
           <div class="py-2 register-form-group-item">
             <%= form.label :gender %>
