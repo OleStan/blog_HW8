@@ -4,35 +4,33 @@
 
 <table class="table table-hover">
   <thead>
-  <tr>
-    <th scope="col">Author</th>
-    <th scope="col">Title</th>
-    <th scope="col">Image</th>
-    <th scope="col">Content</th>
-    <th colspan="3"></th>
-    <th scope="col">Counting</th>
-  </tr>
+    <tr>
+      <th scope="col">Author</th>
+      <th scope="col">Title</th>
+      <th scope="col">Image</th>
+      <th scope="col">Content</th>
+      <th colspan="3"></th>
+      <th scope="col">Counting</th>
+    </tr>
   </thead>
 
   <tbody>
-  <% @posts.each do |post| %>
-    <tr>
-      <th scope="row" ><%= post.name %></th>
-      <td><%= post.title %></td>
-      <td class="miniature"><img src = "<%= post.image %>" class="img_miniature"></td>
-      <td><%= truncate post.content, length: 160 %></td>
-      <td><%= link_to 'Show', post, class: 'btn btn-secondary btn-sm', role: "button", style: "color: white"   %></td>
-      <td><%= link_to 'Edit', edit_post_path(post), class: 'btn btn-info btn-sm', role: "button", style: "color: white" %></td>
-      <td ><%= link_to 'Delete', post, class: 'btn btn-danger btn-sm', role: "button", style: "color: white" , method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <td><div class="row">
-        <div class="col"><img src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/view-512.png" class="icons">
-          <%= post.views %></div>
-        <div class="w-100"></div>
-        <div class="col"> <img src="https://cdn.iconscout.com/icon/free/png-256/comment-2551199-2136583.png" class="icons">
-          <%= post.comments.size %></div>
-      </div></td>
-    </tr>
-  <% end %>
+    <% @posts.each do |post| %>
+      <tr>
+        <th scope="row" ><%= post.name %></th>
+        <td><%= post.title %></td>
+        <td class="miniature"><img src = "<%= post.image %>" class="img_miniature"></td>
+        <td><%= truncate post.content, length: 160 %></td>
+        <td><%= link_to 'Show', post, class: 'btn btn-secondary btn-sm', role: "button", style: "color: white"   %></td>
+        <td><%= link_to 'Edit', edit_post_path(post), class: 'btn btn-info btn-sm', role: "button", style: "color: white" %></td>
+        <td ><%= link_to 'Delete', post, class: 'btn btn-danger btn-sm', role: "button", style: "color: white" , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><div class="row">
+          <div class="col"> Views:<%= post.views %></div>
+          <div class="w-100"></div>
+          <div class="col"> Comments:<%= post.comments.size %></div>
+        </div></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 

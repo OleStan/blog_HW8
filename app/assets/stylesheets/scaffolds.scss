@@ -77,45 +77,13 @@ label {
   max-width: 100%;
   max-height: 30%;
 }
-img_show{
-   border: .2rem solid #3c3c3c;
-}
-
 .about_comment{
-  background: #d2d2d2;
   pading: 20px;
-  border-radius: .5rem .5rem 0 0;
-  border: 2px solid #4e4e4e;
+  border-radius: 1rem 1rem 0 0;
+  border: 2px solid red;
 }
 .coment_box{
   border-radius: 0 0 1rem 1rem;
-  border: 2px solid #4e4e4e;
-  padding: .2rem;
+  border: 2px solid red;
 }
-.add_new_comment{
-  border-radius: .5rem .5rem .5rem .5rem;
-  border: 2px solid #3c3c3c;
-  padding: .8rem;
-  background: #d4d4d4;
-}
-.icons{
- width: 1rem
-}
-.title_show{
-  border-radius: .4rem;
-  font-family: -apple-system,
-  BlinkMacSystemFont,"Segoe UI",
-  Roboto,"Helvetica Neue",Arial,
-  sans-serif,"Apple Color Emoji",
-  "Segoe UI Emoji","Segoe UI Symbol";
-  background: #e8ebee;
-  line-height: 1.5;
-  color: #212529;
-  text-align: left;
-  padding: 4rem 2rem;
-}
-.lead_time{
-  font: caption;
-  font-size: 1rem;
-  font-weight: 100;
-}
+

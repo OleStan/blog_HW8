@@ -1,29 +1,26 @@
-<br>
-
-  <div class="title_show">
-    <div class="container">
-      <h1 class="display-4"><%= @post.title.capitalize %></h1>
-      <p class="lead" style="font-weight: 100;"><%= @post.name %></p>
-
-        <img class="img_show" src="<%= @post.image %>" style="width: 70%;border: .2rem solid #3c3c3c; border-radius:.4rem; ">
-      <h3>Content:</h3>
-      <div class="lead">
-        <%= @post.content %>
-      </div>
-      <hr>
-      <p class="lead_time">Update <%= distance_of_time_in_words(@post.updated_at, Time.now) %> ago</p>
-    </div>
-  </div>
 
 
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Name:</strong>
+  <%= @post.name %>
+</p>
 
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
 
+<p>
+  <strong>Content:</strong>
+  <%= @post.content %>
+</p>
 
-
-
-
+<div class="container-lg" style="margin-bottom: 1%">
+  <strong>Image:</strong>
+  <img class=".img_show" src="<%= @post.image %>" class="img-fluid" style=" width: 80%; max-height: 80%;">
+</div>
 <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-info', role: "button", style: "color: white" %>
 <%= link_to 'Back', posts_path, class: 'btn btn-secondary', role: "button", style: "color: white" %>
 <hr>
@@ -35,22 +32,16 @@
         })
     })
 </script>
-<div class="row">
-  <div class="col-6 col-md-2" style="margin-bottom: 2rem">
-    <h2>Comments</h2>
+<h2>Comments</h2>
+<form action="<%= post_path(@post) %>" method='get' id='comments_show'>
+  <div class='field'>
+    <select name='comments_status' class='btn btn-primary' id='comments_select'>
+      <option <%= @comment_status == 'published' ? 'selected' : '' %> >Published</option>
+      <option <%= @comment_status == 'unpublished' ? 'selected' : '' %> >Unpublished</option>
+    </select>
   </div>
-  <div class="col-6 col-md-4">
-    <form action="<%= post_path(@post) %>" method='get' id='comments_show'>
-      <div class='field'>
-        <select name='comments_status' class='btn btn-secondary' id='comments_select'>
-          <option <%= @comment_status == 'published' ? 'selected' : '' %> >Published</option>
-          <option <%= @comment_status == 'unpublished' ? 'selected' : '' %> >Unpublished</option>
-        </select>
-      </div>
-    </form>
-  </div>
-  <div class="col-6 col-md-4"></div>
-</div>
+</form>
+
 <% if @comments.any?%>
   <% @comments.each do |comment| %>
     <%= render "comments/comment", comment: comment %>
