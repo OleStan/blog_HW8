@@ -15,8 +15,8 @@
 
   <div class="form-group" style="margin-bottom: 3%">
     <%= form.label :name%>
-    <%= form.select(:author, Author.order("first_name ASC").collect {|author| [author.full_name, author.full_name]}, {prompt: "Select author"},
-                    class: "form-control", id: "post_name", name: "post[name]") %>
+    <%= form.text_field(:author, value:current_author.full_name,
+        class: "form-control", id: "post_name", name: "post[name]") %>
   </div>
 
 

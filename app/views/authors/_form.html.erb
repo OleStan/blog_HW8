@@ -11,17 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+  <div class="py-2 register-form-group-item">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
   </div>
 
-  <div class="field">
+  <div class="py-2 register-form-group-item">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name%>
+  </div>
+
+  <div class="py-2 register-form-group-item">
     <%= form.label :last_name %>
     <%= form.text_field :last_name %>
   </div>
 
-  <div class="field">
+  <div class="py-2 register-form-group-item">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="py-2 register-form-group-item">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div class="py-2 register-form-group-item">
     <%= form.label :gender %>
     <select name="author[gender]" id="author_gender">
       <option value="">Chose your gender</option>
@@ -32,16 +46,13 @@
 
   </div>
 
-  <div class="field">
+  <div class="py-2 register-form-group-item">
     <%= form.label :birthday %>
     <%= form.datetime_select :birthday, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'},
                              end_year: 1800,  start_year: 2020, discard_hour: true%>
   </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
+
 
   <div class="actions">
     <%= form.submit %>

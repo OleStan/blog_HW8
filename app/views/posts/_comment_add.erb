@@ -21,7 +21,7 @@
   <% end %>
   <%= form.label :name%>
 
-  <%= form.select(:user_id, Author.order("first_name ASC").collect {|author| [author.full_name, author.id]}, {},
+  <%= form.text_field(:user_id, value:current_author.full_name,
                   class: "form-control") %>
   <div class="<%= alert %> alert-danger" role="alert" id="alert" style="margin-top: 20px"><%= alert %></div>
   <div class="field">

@@ -16,7 +16,10 @@ ActiveRecord::Schema.define(version: 2020_12_19_213600) do
     t.string "first_name"
     t.string "last_name"
     t.string "gender"
+    t.string "email"
+    t.string "password_digest"
     t.datetime "birthday"
+    t.boolean "admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

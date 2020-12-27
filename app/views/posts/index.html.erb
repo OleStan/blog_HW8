@@ -22,8 +22,12 @@
       <td class="miniature"><img src = "<%= post.image %>" class="img_miniature"></td>
       <td><%= truncate post.content, length: 160 %></td>
       <td><%= link_to 'Show', post, class: 'btn btn-secondary btn-sm', role: "button", style: "color: white"   %></td>
+      <% unless current_author.nil?%>
+      <%if post.name == current_author.full_name%>
       <td><%= link_to 'Edit', edit_post_path(post), class: 'btn btn-info btn-sm', role: "button", style: "color: white" %></td>
       <td ><%= link_to 'Delete', post, class: 'btn btn-danger btn-sm', role: "button", style: "color: white" , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <%end %>
+      <%end %>
       <td><div class="row">
         <div class="col"><img src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/view-512.png" class="icons">
           <%= post.views %></div>
@@ -38,4 +42,4 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path, class: 'btn btn-success btn-lg ', role: "button", style: "color: white" %>
+<%= link_to 'New Post', new_post_path, class: 'btn btn-success btn-lg ', role: "button", style: "color: white" if current_author  %>
