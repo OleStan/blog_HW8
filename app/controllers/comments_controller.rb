@@ -1,9 +1,16 @@
 class CommentsController < ApplicationController
+  before_action :find_authors, only: %(edit create update)
 
   def new
     @post = Post.find(params[:post_id])
     @autors = Author.all
     @comment = @post.comments.create(comment_params)
+    @comments = @post.comments
+  end
+
+  def edit
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
     @comments = @post.comments
   end
 
@@ -28,7 +35,9 @@ class CommentsController < ApplicationController
   def update
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
-    @comment.published!
+    #@comment.published!
+    @comment.update(comment_params)
+
     redirect_to post_path(@post)
   end
 
@@ -41,6 +50,10 @@ class CommentsController < ApplicationController
 
 
   private
+
+  def find_authors
+    @authors = Author.all
+  end
   def comment_params
     params.require(:comment).permit(:body, :user_id, :status)
   end

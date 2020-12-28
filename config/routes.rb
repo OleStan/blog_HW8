@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   get 'sessions/new'
   root 'posts#index', as: 'home'
   get '/createaccount', to: 'authors#new', as: 'log_in'
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :authors
   resources :posts do
+    get "search", on: :collection
     resources :comments do
     member do
         post :publish

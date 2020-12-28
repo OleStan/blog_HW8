@@ -6,18 +6,26 @@
       <div class="col">
         Name: <%=autors_id.full_name %>
       </div>
-      <div class="col">
+      <div class="col-6 col-md-2">
         Updated <%= distance_of_time_in_words(comment.updated_at, Time.now) %> ago
       </div>
+      <%if comment.updated_at != comment.created_at %>
+        <div class="alert alert-primary" role="alert">
+          Edited
+        </div>
+      <% end %>
     </div>
     <div class="row coment_box">
       <div class="col-md-10">
         <%= comment.body %>
       </div>
+
       <% unless current_author.nil?%>
-        <%if @post.name == current_author.full_name%>
+        <%if comment.user_id == current_author.id%>
       <div class="col-6 col-md-2" style="padding: .5rem">
         Status: <%= comment.status %><br>
+        <% a = comment.updated_at.hour %>  <%b = comment.created_at.hour%>
+        <%= a-b %>
         <% if comment.status == 'unpublished' %>
           <%= link_to 'Publish Comment', publish_post_comment_path(@post.id, comment.id), method: :post,
                 class: 'btn btn-warning btn-sm', role: "button", style: "color: white",
@@ -27,6 +35,7 @@
                     method: :delete,
                     class: 'btn btn-danger btn-sm', role: "button", style: "color: white",
                     data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Edit', edit_post_comment_path(comment.post, comment.id), class: "btn btn-secondary btn-sm" %>
       </div>
           <% end %>
 
