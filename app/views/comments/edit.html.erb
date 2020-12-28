@@ -12,9 +12,14 @@
 
         <div class="form-group" style="display: none">
           <%= form.label :status %><br>
-
           <%=form.text_field(:author, value:@comment.status,
                              id: "comment_status", name: "comment[status]", style: "visibility:hidden")%>
+        </div>
+
+        <div class="form-group" style="display: none">
+          <%= form.label :status %><br>
+          <%=form.text_field(:edited, value:true,
+                             id: "comment_edited", name: "comment[edited]", style: "visibility:hidden")%>
         </div>
 
         <%= form.submit "Save changes", class: "btn btn-primary" %>

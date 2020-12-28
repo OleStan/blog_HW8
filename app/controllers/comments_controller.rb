@@ -55,6 +55,6 @@ class CommentsController < ApplicationController
     @authors = Author.all
   end
   def comment_params
-    params.require(:comment).permit(:body, :user_id, :status)
+    params.require(:comment).permit(:body, :user_id, :status,:edited)
   end
 end

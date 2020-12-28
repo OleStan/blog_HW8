@@ -1,7 +1,12 @@
 <p id="notice"><%= notice %></p>
-
 <h1 class="display-1" >Many Posts</h1>
 
+
+<%= form_with url: search_posts_path, method: :get, local:true do |f| %>
+  <%= f.label :query, "Search for:" %>
+  <%= f.text_field :query, id: :q %>
+  <%= f.submit "Search" %>
+<%end %>
 <table class="table table-hover">
   <thead>
   <tr>
@@ -15,7 +20,8 @@
   </thead>
 
   <tbody>
-  <% @posts.each do |post| %>
+  <% unless @posts.nil?%>
+  <% @posts.each do |post|%>
     <tr>
       <th scope="row" ><%= post.name %></th>
       <td><%= post.title %></td>
@@ -39,7 +45,7 @@
   <% end %>
   </tbody>
 </table>
-
+  <% end %>
 <br>
 
 <%= link_to 'New Post', new_post_path, class: 'btn btn-success btn-lg ', role: "button", style: "color: white" if current_author  %>

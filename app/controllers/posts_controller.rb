@@ -62,7 +62,10 @@ class PostsController < ApplicationController
       end
     end
   end
-
+  def search
+    @posts = Post.where('content LIKE ?', "%#{params[:q]}%")
+    render :index
+  end
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy

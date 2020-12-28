@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_12_19_213600) do
     t.integer "status", default: 0
     t.integer "user_id"
     t.integer "post_id", null: false
+    t.boolean "edited", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_comments_on_post_id"

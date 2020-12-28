@@ -29,6 +29,8 @@
 
           <% if current_author %>
             <%= link_to "Log Out", logout_path, class: "btn btn-secondary btn-sm" , style: "color: white" %>
+
+            <%= link_to "Your account", edit_author_path(current_author), class: "btn btn-secondary btn-sm" , style: "color: white" %>
           <% else %>
             <%= link_to "Sing in", signup_path, id: "register", class: "btn btn-secondary btn-sm", style: "color: white" %>
 
