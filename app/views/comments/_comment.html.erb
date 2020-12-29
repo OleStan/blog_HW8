@@ -1,6 +1,14 @@
 <%autors_id = @autors.find_by(id: comment.user_id) %>
 <% if  comment.id != nil %>
   <div class="container " id="comment-<%= comment.id %>">
+    <div class="col-md-2 user_box">
+      <div class="col">
+        <%=autors_id.full_name %>
+      </div>
+      <div class="col">
+        <%= image_tag autors_id.avatar, style: "width: 100px"  %>
+      </div>
+    </div>
     <div class="row about_comment" style="padding: .5rem">
       <div class="col">
       </div>
@@ -16,7 +24,14 @@
     <div class="row coment_box">
       <div class="container">
         <div class="row ">
-
+        <div class="col-md-2 user_box">
+          <div class="col">
+            <%=autors_id.full_name %>
+          </div>
+          <div class="col">
+            <%= image_tag autors_id.avatar, style: "width: 100px"  %>
+          </div>
+        </div>
         <div class="col-md-8">
           <%= comment.body %>
         </div>
