@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 class PostsController < ApplicationController
   before_action :authorize, only: [:edit, :update]
   before_action :set_post, only: %i[show edit update destroy]
@@ -7,7 +6,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    @autors = Author.all
     @posts = Post.all
+
   end
 
   # GET /posts/1

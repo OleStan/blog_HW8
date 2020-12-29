@@ -1,3 +1,5 @@
+
+
 <% genders = ["Male", "Female"] %>
 <div class="row register-wrapp d-flex justify-content-center align-items-center">
   <div class="w-50 mx-auto">
@@ -29,6 +31,11 @@
           <div class="py-2 register-form-group-item">
             <%= form.label :last_name %>
             <%= form.text_field :last_name %>
+          </div>
+
+          <div class="py-2 register-form-group-item">
+            <%= form.label :avatar %>
+            <%= form.file_field :avatar %>
           </div>
 
           <div class="py-2 register-form-group-item">

@@ -1,6 +1,8 @@
 class Author < ApplicationRecord
   has_secure_password
 
+  has_one_attached :avatar
+
   VALID_EMAIL_REGX= /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :first_name, :last_name, :gender, :birthday, presence: true
   validates :email, presence: true, format: { with: VALID_EMAIL_REGX }
