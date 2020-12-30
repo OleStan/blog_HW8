@@ -1,9 +1,9 @@
 <br>
-
+<%autors_id = @autors.find_by(id: @post.name) %>
 <div class="title_show">
   <div class="container">
     <h1 class="display-4"><%= @post.title.capitalize %></h1>
-    <p class="lead" style="font-weight: 100;"><%= @post.name %></p>
+    <p class="lead" style="font-weight: 100;"><%= autors_id.full_name %></p>
 
     <img class="img_show" src="<%= @post.image %>" style="width: 70%;border: .2rem solid #3c3c3c; border-radius:.4rem; ">
     <h3>Content:</h3>
