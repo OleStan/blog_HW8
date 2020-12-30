@@ -8,7 +8,7 @@
           <%=autors_id.full_name %>
         </div>
         <div class="col-6">
-          Updated <%= distance_of_time_in_words(comment.updated_at, Time.now) %> ago
+          Created <%= distance_of_time_in_words(comment.created_at, Time.now) %> ago
         </div>
         <%if comment.edited? %>
           <div class="col-4">
@@ -43,12 +43,14 @@
                               method: :delete,
                               class: 'btn btn-danger btn-sm', role: "button", style: "color: white",
                               data: { confirm: 'Are you sure?' } %>
+                  <%if Time.now.to_formatted_s(:number).to_i - comment.created_at.to_formatted_s(:number).to_i < 52000 %>
                   <%= link_to 'Edit', edit_post_comment_path(comment.post, comment.id), class: "btn btn-secondary btn-sm" %>
-                </div>
+                  <% end %>
+                                  </div>
                 <div class="col-6 col-md-4">
                   Status: <%= comment.status %><br>
-                  <% a = comment.updated_at.hour.to_i * 60 %>  <%b = comment.created_at.hour.to_i * 60 %>
-                  <%= a-b %>
+
+
                 </div>
               <% end %>
             <% end %>

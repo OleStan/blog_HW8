@@ -12,6 +12,7 @@ class AuthorsController < ApplicationController
   end
 
   def edit
+    cookies[:views] = 3
     @author = current_author
   end
   def show

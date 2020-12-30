@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    cookies[:views] = 3
     author = Author.find_by_email(params[:email])
     if author && author.authenticate(params[:password])
       session[:author_id] = author.id
