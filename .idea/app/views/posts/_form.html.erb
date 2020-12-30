@@ -1,0 +1,44 @@
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="form-group" style="margin-bottom: 3%">
+    <%= form.label :name%>
+    <%= form.select(:author, Author.order("first_name ASC").collect {|author| [author.full_name, author.full_name]}, {prompt: "Select author"},
+                    class: "form-control", id: "post_name", name: "post[name]") %>
+  </div>
+
+
+
+
+    <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, class: "form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.text_field :image, class: "form-control"  %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit( {:class => "btn btn-success",id: "button", onsubmit: "alert('submit!');return false"})%>
+  </div>
+
+<% end %>

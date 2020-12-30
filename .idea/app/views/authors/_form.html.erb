@@ -1,0 +1,49 @@
+<%= form_with(model: author) do |form| %>
+  <% if author.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(author.errors.count, "error") %> prohibited this author from being saved:</h2>
+
+      <ul>
+        <% author.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %>
+    <select name="author[gender]" id="author_gender">
+      <option value="">Chose your gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+
+
+  </div>
+
+  <div class="field">
+    <%= form.label :birthday %>
+    <%= form.datetime_select :birthday, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'},
+                             end_year: 1800,  start_year: 2020, discard_hour: true%>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

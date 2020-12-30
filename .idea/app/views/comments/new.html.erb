@@ -1,0 +1,46 @@
+
+
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @post.name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @post.content %>
+</p>
+
+<div class="container-lg" style="margin-bottom: 1%">
+  <strong>Image:</strong>
+  <img class=".img_show" src="<%= @post.image %>" class="img-fluid" style=" width: 80%; max-height: 80%;">
+</div>
+<%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-info', role: "button", style: "color: white" %>
+<%= link_to 'Back', posts_path, class: 'btn btn-secondary', role: "button", style: "color: white" %>
+<hr>
+
+<script>
+    $(function(){
+        $("#comments_select").change(function(){
+            $('#comments_show').submit()
+        })
+    })
+</script>
+
+<form action="<%= post_path(@post) %>" method='get' id='comments_show'>
+  <div class='field'>
+    <select name='comments_status' class='btn btn-primary' id='comments_select'>
+      <option <%= @comment_status == 'published' ? 'selected' : '' %> >Published</option>
+      <option <%= @comment_status == 'unpublished' ? 'selected' : '' %> >Unpublished</option>
+    </select>
+  </div>
+</form>
+
+<%= render 'posts/comment_add' %>
