@@ -47,7 +47,7 @@
                 </div>
                 <div class="col-6 col-md-4">
                   Status: <%= comment.status %><br>
-                  <% a = comment.updated_at.hour %>  <%b = comment.created_at.hour%>
+                  <% a = comment.updated_at.hour.to_i * 60 %>  <%b = comment.created_at.hour.to_i * 60 %>
                   <%= a-b %>
                 </div>
               <% end %>
