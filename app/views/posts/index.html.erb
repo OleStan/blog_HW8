@@ -11,7 +11,7 @@
     <div class="col align-self-center">
 
       <p><%=autors_id.full_name%> ago</p>
-      <p style=""><%=image_tag autors_id.avatar, style: "width: 5%"  %></p>
+      <p style=""><img src="<%= autors_id.avatar%>"   style= "width: 100%; border-radius: .4rem; border: .2rem solid #4e4e4e;" ></p>
 
     </div>
   </div>
@@ -26,13 +26,7 @@
 
   <div class="row" style="margin-top: 1rem">
     <div class="col-12 col-md-3">
-      <% if 1 == 0 %>
-        <% all_comm = post.comments.size%>
-        <%= all_comm %>
-      <% comm_un = all_comm.find_by(status: published) %>
-      <% comm_p = all_comm.find_by(status: 1) %>
-      <% comm_p %>
-      <% end %>
+
       <img src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/view-512.png" class="icons">
       <%= post.views %>
       <img src="https://cdn.iconscout.com/icon/free/png-256/comment-2551199-2136583.png" class="icons">
