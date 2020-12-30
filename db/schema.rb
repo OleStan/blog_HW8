@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_12_29_090942) do
     t.string "gender"
     t.string "email"
     t.string "password_digest"
+    t.string "avatar"
     t.datetime "birthday"
     t.boolean "admin", default: false
     t.datetime "created_at", precision: 6, null: false
