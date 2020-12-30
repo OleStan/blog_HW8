@@ -2,19 +2,17 @@
 class PostsController < ApplicationController
   before_action :authorize, only: [:edit, :update]
   before_action :set_post, only: %i[show edit update destroy]
+  before_action :a_author, only: [:search, :index, :show]
 
   # GET /posts
   # GET /posts.json
   def index
-    @autors = Author.all
     @posts = Post.all
-
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @autors = Author.all
     @post.increment(:views)
     @post.save
     @comment = Comment.new
@@ -87,5 +85,8 @@ class PostsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def post_params
     params.require(:post).permit(:name, :title, :content, :image)
+  end
+  def a_author
+    @autors = Author.all
   end
 end

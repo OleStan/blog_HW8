@@ -2,38 +2,34 @@
 <% if  comment.id != nil %>
 
   <div class="container">
-    <div class="row align-items-start" style="border: 2px solid red " >
-      <div class="col-2" style="border: 2px solid red " >
-        <div class="container">
-          <div class="col" >
-            <%=autors_id.full_name %>
+    <div class="col ">
+      <div class="row about_comment">
+        <div class="col-2" >
+          <%=autors_id.full_name %>
+        </div>
+        <div class="col-6">
+          Updated <%= distance_of_time_in_words(comment.updated_at, Time.now) %> ago
+        </div>
+        <%if comment.edited? %>
+          <div class="col-4">
+              Edited
           </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row align-items-end coment_box"  >
+      <div class="col-2">
+        <div class="container">
           <div class="w-100"></div>
           <div class="col" >
-            <%= image_tag autors_id.avatar, style: "width: 100%"  %>
+            <%= image_tag autors_id.avatar, style: "width: 100%; border-radius: .4rem; border: .2rem solid #4e4e4e;" %>
           </div>
         </div>
       </div>
       <div class="col">
-        <div class="col">
-          <div class="row" style="border: 2px solid red ">
-            <div class="col-6">
-              Updated <%= distance_of_time_in_words(comment.updated_at, Time.now) %> ago
-            </div>
-            <%if comment.edited? %>
-              <div class="col-4">
-                <div class="alert alert-primary" role="alert">
-                  Edited
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
         <div class="w-100"></div>
-        <div class="col" style="border: 2px solid red "><%= comment.body %></div>
-
-
-        <div class="row align-items-end" style="border: 2px solid red ">
+        <div class="col" style="padding-bottom: 1rem"><%= comment.body %></div>
+        <div class="row align-items-end" >
 
             <% unless current_author.nil?%>
               <%if comment.user_id == current_author.id%>
@@ -59,5 +55,6 @@
             </div>
       </div>
     </div>
+  <hr>
 <% end %>
 </div>

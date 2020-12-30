@@ -2,7 +2,6 @@
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,18 +9,12 @@
       </ul>
     </div>
   <% end %>
-
-
-
   <div class="form-group" style="margin-bottom: 3%; display: none" >
     <%= form.text_field(:author, value:current_author.id,
-         id: "post_name", name: "post[name]", style: "visibility:hidden") %>
+                        id: "post_name", name: "post[name]", style: "visibility:hidden") %>
   </div>
 
-
-
-
-    <div class="field">
+  <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title, class: "form-control"%>
   </div>

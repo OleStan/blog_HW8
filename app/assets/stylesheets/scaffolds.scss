@@ -73,9 +73,9 @@ label {
   max-width: 176px;
   max-height: 82px;
 }
-.img_miniature{
-  max-width: 100%;
-  max-height: 30%;
+img_miniature{
+  max-width: 30%;
+
 }
 img_show{
    border: .2rem solid #3c3c3c;
@@ -87,6 +87,11 @@ img_show{
   border-radius: .5rem .5rem 0 0;
   border: 2px solid #4e4e4e;
 }
+.post_text{
+  font-size: large;
+}
+
+
 .coment_box{
   border-radius: 0 0 1rem 1rem;
   border: 2px solid #4e4e4e;
@@ -101,6 +106,21 @@ img_show{
 .icons{
  width: 1rem
 }
+.post_box{
+
+  border-radius: .4rem;
+  font-family: -apple-system,
+  BlinkMacSystemFont,"Segoe UI",
+  Roboto,"Helvetica Neue",Arial,
+  sans-serif,"Apple Color Emoji",
+  "Segoe UI Emoji","Segoe UI Symbol";
+  background: #e8ebee;
+  line-height: 1.5;
+  text-align: left;
+  padding-bottom:  2rem;
+}
+
+
 .title_show{
   border-radius: .4rem;
   font-family: -apple-system,

@@ -1,49 +1,58 @@
 <p id="notice"><%= notice %></p>
 <h1 class="display-1" >Many Posts</h1>
 
-
-
-<table class="table table-hover">
-  <thead>
-  <tr>
-    <th scope="col">Author</th>
-    <th scope="col">Title</th>
-    <th scope="col">Image</th>
-    <th scope="col">Content</th>
-    <th colspan="3"></th>
-    <th scope="col">Counting</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% unless @posts.nil?%>
+<div class="container">
+<% unless @posts.nil?%>
   <% @posts.each do |post|%>
-  <%autors_id = @autors.find_by(id: post.name) %>
+    <%autors_id = @autors.find_by(id: post.name) %>
+<div class="container post_box">
+  <h3><%= post.title %></h3>
+  <div class="row">
+    <div class="col align-self-center">
 
-    <tr>
-      <th scope="row" ><%=autors_id.full_name %><%=image_tag autors_id.avatar.variant(resize_to_limit: [100, 100]) %> </th>
-      <td><%= post.title %></td>
-      <td class="miniature"><img src = "<%= post.image %>" class="img_miniature"></td>
-      <td><%= truncate post.content, length: 160 %></td>
-      <td><%= link_to 'Show', post, class: 'btn btn-secondary btn-sm', role: "button", style: "color: white"   %></td>
+      <p><%=autors_id.full_name%> ago</p>
+      <p style=""><%=image_tag autors_id.avatar, style: "width: 5%"  %></p>
+
+    </div>
+  </div>
+  <p class="lead_time">Created <%= distance_of_time_in_words(post.created_at, Time.now) %> ago</p>
+  <hr>
+  <div class="row">
+    <div class="col col-md-2">
+      <img src = "<%= post.image %>" style="width: 100%; border-radius: .4rem; border: .2rem solid #4e4e4e;">
+    </div>
+    <div class="col col-md-8 post_text"><%= truncate post.content, length: 160 %></div>
+  </div>
+
+  <div class="row" style="margin-top: 1rem">
+    <div class="col-12 col-md-3">
+      <% if 1 == 0 %>
+        <% all_comm = post.comments.size%>
+        <%= all_comm %>
+      <% comm_un = all_comm.find_by(status: published) %>
+      <% comm_p = all_comm.find_by(status: 1) %>
+      <% comm_p %>
+      <% end %>
+      <img src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/view-512.png" class="icons">
+      <%= post.views %>
+      <img src="https://cdn.iconscout.com/icon/free/png-256/comment-2551199-2136583.png" class="icons">
+      <%= post.comments.size %>
+    </div>
+
+    <div class="col-6 col-md-4">
+      <%= link_to 'Show', post, class: 'btn btn-secondary btn-sm', role: "button", style: "color: white"   %>
       <% unless current_author.nil?%>
-      <%if post.name == current_author.full_name%>
-      <td><%= link_to 'Edit', edit_post_path(post), class: 'btn btn-info btn-sm', role: "button", style: "color: white" %></td>
-      <td ><%= link_to 'Delete', post, class: 'btn btn-danger btn-sm', role: "button", style: "color: white" , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%if current_author.id == post.name.to_i %>
+          <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-info btn-sm', role: "button", style: "color: white" %>
+          <%= link_to 'Delete', post, class: 'btn btn-danger btn-sm', role: "button", style: "color: white" , method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%end %>
       <%end %>
-      <%end %>
-      <td><div class="row">
-        <div class="col"><img src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/view-512.png" class="icons">
-          <%= post.views %></div>
-        <div class="w-100"></div>
-        <div class="col"> <img src="https://cdn.iconscout.com/icon/free/png-256/comment-2551199-2136583.png" class="icons">
-          <%= post.comments.size %></div>
-      </div></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-  <% end %>
+    </div>
+  </div>
+ </div>
+    <hr>
+<%end %>
+<%end %>
+  </div>
 <br>
-
-<%= link_to 'New Post', new_post_path, class: 'btn btn-success btn-lg ', role: "button", style: "color: white" if current_author  %>
+  <%= link_to 'New Post', new_post_path, class: 'btn btn-success btn-lg ', role: "button", style: "color: white" if current_author  %>
