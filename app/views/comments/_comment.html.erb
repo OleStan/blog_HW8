@@ -1,5 +1,5 @@
 <%autors_id = @autors.find_by(id: comment.user_id) %>
-<% if  comment.id != nil %>
+<% if  comment.present? %>
 
   <div class="container">
     <div class="col ">
