@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+.comm_{
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 15px;
+}

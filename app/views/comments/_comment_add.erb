@@ -7,7 +7,7 @@
   <div class="alert alert-danger"><%=msg%></div>
 <% end %>
 
-<%= form_for ([@post, @comments.build]) do |form|%>
+<%= form_with(model: [@post, @comment]) do |form|%>
   <% if @comments.any? %>
     <div id="error_explanation">
       <h2><%= pluralize( @comment.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -21,7 +21,7 @@
   <% end %>
     <div style="display: none">
   <%= form.label :name%>
-
+      <%= form.hidden_field :parent_id, value: params[:comment_id] if params[:comment_id].present? %>
   <%= form.text_field(:user_id, value:current_author.id,
                   class: "form-control") %>
     </div>

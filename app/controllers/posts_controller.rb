@@ -7,9 +7,10 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.paginate(page: params[:page], per_page: 8)
   end
 
+  def add; end
   # GET /posts/1
   # GET /posts/1.json
   def show
@@ -19,9 +20,9 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @comment_status = params[:comments_status].to_s.downcase
     @comments = if @comment_status == 'unpublished'
-                  @post.comments.unpublished
+                  @post.comments.unpublished.roots
                 else
-                  @post.comments.published
+                  @post.comments.published.roots
                 end
   end
 

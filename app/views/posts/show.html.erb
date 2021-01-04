@@ -26,6 +26,8 @@
 <%= link_to 'Back', posts_path, class: 'btn btn-secondary', role: "button", style: "color: white" %>
 <hr>
 
+
+<% if nil? %>
 <script>
     $(function(){
         $("#comments_select").change(function(){
@@ -49,19 +51,24 @@
     </form>
   </div>
 </div>
-
-
+<% end %>
+<div class="row">
+<h2>Comments</h2>
+</div>
 <% if @comments.any?%>
   <% @comments.each do |comment| %>
-    <%= render "comments/comment", comment: comment %>
+
+    <%= render "comment", comment: comment.subtree.arrange  %>
+
   <% end %>
 <% end %>
 
 <% unless current_author.nil?%>
-
-    <%= render 'comment_add' %>
-    <% else %>
+  <div id="comment_new">
+    <%= render 'comments/comm_add', comment_id: nil %>
+  </div>
+<% else %>
     <div class="alert alert-danger" role="alert">
       Only registret user can add comment
     </div>
-  <% end %>
+<% end %>

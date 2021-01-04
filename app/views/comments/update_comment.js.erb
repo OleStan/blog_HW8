@@ -1,0 +1,6 @@
+$('.reply').show();
+$('.comment_form').remove();
+$('#comment_new').append("<%= j render partial:'comments/comm_add', locals: {comment: @post.comments.new}%>");
+$('#reply_<%=  params[:id] %>').hide();
+$('#reply_<%= params[:id] %>').after("<%= j render('comments/comm_add_new') %>");
+

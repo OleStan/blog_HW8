@@ -1,0 +1,12 @@
+$('.reply').show();
+$('.comment_form').remove();
+
+<% if params[:comment_id].present? %>
+
+  $('#reply_<%= params[:comment_id] %>').after("<%= j render('comments/comm_add') %>");
+  $('#reply_<%= params[:comment_id] %>').hide();
+
+<%elsif params[:comment_id].nil? %>
+alert('sdsd');
+<%end %>
+$('#comment_new').append("<%= j render('comments/comm_add') %>");

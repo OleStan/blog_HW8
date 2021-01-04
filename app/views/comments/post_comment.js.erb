@@ -1,0 +1,9 @@
+
+$('.reply').show();
+
+$('.comment_form').after("<%= j render('comments/one_comment') %>")
+$('.comment_form').remove();
+
+$('#comment_new').append("<%= j render('comments/comm_add') %>");
+
+

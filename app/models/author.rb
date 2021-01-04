@@ -1,6 +1,6 @@
 class Author < ApplicationRecord
   has_secure_password
-
+  has_many :ratings, dependent: :destroy
 
 
   VALID_EMAIL_REGX= /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

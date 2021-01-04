@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :ratings
   get 'sessions/new'
   root 'posts#index', as: 'home'
   get '/createaccount', to: 'authors#new', as: 'log_in'
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
     get "search", on: :collection
     resources :comments do
     member do
+        get  :add
         post :publish
       end
     end

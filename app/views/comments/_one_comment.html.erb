@@ -1,0 +1,39 @@
+<% parent = @comment %>
+
+<div id="comment_id_<%= parent.id %>" class="coment_box">
+  <div class="row about_comment">
+    <div class="col">Created <%= distance_of_time_in_words(parent.created_at, Time.now) %> ago</div>
+    <div class="col">
+      <%if parent.edited? %>
+        <div class="col-4">
+          Edited
+        </div>
+      <% end %>
+    </div>
+    <div class="col rating">
+
+    </div>
+  </div>
+  <div id='comment_body_<%=parent.id %>'  class="comment_body">
+    <%=parent.body %>
+  </div>
+  <hr>
+  <div id="reply_<%=parent.id%>" class="reply ">
+    <%= %>
+    <% if parent.ancestry.present? || parent.ancestry.nil? %>
+      <%# if @comment.ancestry.present? || @comment.ancestry.nil? %>
+      <%#= link_to "Reply", add_post_comment_path( @post, comment_id: @comment.id), remote: true if @comment.ancestry.nil? || @comment.ancestry.count("/") < 3 %>
+      <%# end %>
+    <% end %>
+
+    <%= link_to "Delete", post_comment_path(post_id: parent.post_id, id: parent.id),
+                method: :delete,
+                class: 'btn btn-danger btn-sm', role: "button", style: "color: white",
+                data: { confirm: 'Are you sure?' }, remote: true, id:'' %>
+
+    <%if Time.now.to_formatted_s(:number).to_i - parent.created_at.to_formatted_s(:number).to_i < 52000 %>
+      <%= link_to 'Edit', edit_post_comment_path(parent.post, parent.id), class: "btn btn-secondary btn-sm", remote: true, id:'' %>
+    <% end %>
+  </div>
+</div>
+

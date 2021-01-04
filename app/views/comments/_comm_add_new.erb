@@ -1,0 +1,24 @@
+<%= form_with(model: [@post, @comment],  class:'comment_form', local: false) do |form|%>
+
+  <div style="display: none">
+  <%= form.label :name%>
+  <%= form.text_field(:user_id, value:current_author.id,
+                  class: "form-control") %>
+  </div>
+
+  <div class="form-group" style="display: none">
+    <%= form.label :status %><br>
+    <%=form.text_field(:edited, value:true,
+                       id: "comment_edited", name: "comment[edited]", style: "visibility:hidden")%>
+  </div>
+
+
+  <div class="field">
+    <%= form.text_area :body, class: "form-control"  %>
+  </div>
+  <%=params[:comment_id] %>
+  <%=params[:comment_id].present? %>
+  <%= form.hidden_field :parent_id, value: params[:comment_id] if params[:comment_id].present? %>
+
+  <%= form.submit("Add comment", {:class => 'btn btn-success'}) %>
+<% end %>
