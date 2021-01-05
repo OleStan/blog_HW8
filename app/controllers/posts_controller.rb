@@ -16,7 +16,6 @@ class PostsController < ApplicationController
   def show
     @post.increment(:views)
     @post.save
-
     @comment = Comment.new
     @comment_status = params[:comments_status].to_s.downcase
     @comments = if @comment_status == 'unpublished'
@@ -24,6 +23,7 @@ class PostsController < ApplicationController
                 else
                   @post.comments.published.roots
                 end
+
   end
 
   # GET /posts/new

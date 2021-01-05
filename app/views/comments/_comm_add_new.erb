@@ -16,8 +16,6 @@
   <div class="field">
     <%= form.text_area :body, class: "form-control"  %>
   </div>
-  <%=params[:comment_id] %>
-  <%=params[:comment_id].present? %>
   <%= form.hidden_field :parent_id, value: params[:comment_id] if params[:comment_id].present? %>
 
   <%= form.submit("Add comment", {:class => 'btn btn-success'}) %>

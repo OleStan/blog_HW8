@@ -19,6 +19,7 @@ class AuthorsController < ApplicationController
     redirect_to home_url
   end
   def create
+    cookies[:views] = 3
     @author = Author.new(author_params)
     if @author.save
       session[:author_id] = @author.id

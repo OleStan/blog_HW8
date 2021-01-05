@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   resources :sessions
 
+  post 'vote', to: 'ratings#vote'
+
   resources :authors
   resources :posts do
     get "search", on: :collection

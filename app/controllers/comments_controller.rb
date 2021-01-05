@@ -64,7 +64,4 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:body, :user_id, :status, :edited, :parent_id)
   end
 
-  def chang_edit
-    params.require(:comment).permit(:edited)
-  end
 end
