@@ -12,15 +12,16 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   resources :sessions
 
-  post 'vote', to: 'ratings#vote'
+
 
   resources :authors
   resources :posts do
+    get 'vote', to: 'ratings#vote'
     get "search", on: :collection
     resources :comments do
     member do
-        get  :add
-        post :publish
+      get  :add
+      post :publish
       end
     end
   end

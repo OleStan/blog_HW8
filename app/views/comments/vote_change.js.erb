@@ -1,0 +1,4 @@
+
+
+$('#count_likes_<%=params[:comment_id] %>').empty();
+$('#count_likes_<%=params[:comment_id] %>').append('<span title="All votes <%= @comment.count_result%>: ↑<%= @comment.count_likes%> & ↓<%= @comment.count_dislikes%>"><%= @comment.count_result%></span>');
