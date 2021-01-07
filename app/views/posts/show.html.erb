@@ -58,7 +58,7 @@
 <% if @comments.any?%>
   <% @comments.each do |comment| %>
 
-    <%= render "comment", comment: comment.subtree.arrange  %>
+    <%= render "comment", comment: comment.subtree.arrange if comment.subtree.present?  %>
 
   <% end %>
 <% end %>
